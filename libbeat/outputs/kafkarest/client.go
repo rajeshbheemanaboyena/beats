@@ -142,10 +142,14 @@ func (c *client) Close() error {
 func (c *client) Publish(_ context.Context, batch publisher.Batch) error {
 	events := batch.Events()
 	c.observer.NewBatch(len(events))
-
+	fmt.Println("====================================")
+	fmt.Println(events)
+	fmt.Println("=================================")
 	data := make(map[string][]map[string]interface{})
 	eventsRecord := make(map[string][]publisher.Event)
 	failedEvents := events[:0]
+	fmt.Println("-------------------------")
+	fmt.Println(failedEvents)
 	var sendErr error
 	url := c.hosts[0]
 
